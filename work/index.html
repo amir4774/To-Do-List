@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="../css/main.css">
+    <!-- Font Awesome -->
+    <!-- <script src="https://kit.fontawesome.com/73d99e9958.js" crossorigin="anonymous"></script> -->
+    <title>Work</title>
+</head>
+<body class="bg-gray-300">
+    <div class="container mx-auto">
+        <h2 class="text-4xl font-bold text-sky-700 my-4">Add a note:</h2>
+        <form id="my-form">
+            <div class="flex flex-col">
+                <textarea class="bg-gray-100 resize-y h-auto w-full outline-none border border-gray-300 p-2 rounded"></textarea>
+                <button class="mx-auto bg-red-600 w-1/4 h-auto my-8 text-white hover:bg-red-800">Add Note</button>
+            </div>        
+        </form>
+        <hr>
+        <h2 class="text-4xl font-bold text-sky-700 my-4">My Notes:</h2>
+        <div id="output" class="grid grid-cols-2 gap-0"></div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html> 
