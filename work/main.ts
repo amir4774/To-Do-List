@@ -1,6 +1,6 @@
-const myText = document.querySelector('textarea');
-const form = document.querySelector('#my-form');
-const output = document.querySelector('#output'); 
+const myText = document.querySelector('textarea') as HTMLTextAreaElement;
+const form = document.querySelector('#my-form') as HTMLDivElement;
+const output = document.querySelector('#output') as HTMLDivElement;
 
 class Notes {
     static display() {
@@ -17,7 +17,7 @@ class Notes {
                 </div>
             `;
         });
-        if(notes.length > 0) {
+        if (notes.length > 0) {
             output.innerHTML = out;
         } else {
             output.innerHTML = `Nothing to show!`;
@@ -25,25 +25,28 @@ class Notes {
     }
 
     static getNotes() {
-        let notes;
-        if(localStorage.getItem('notes') === null) {
+        let notes: string[];
+        const storedNotes = localStorage.getItem('notes');
+
+        if (storedNotes === null) {
             notes = [];
         } else {
-            notes = JSON.parse(localStorage.getItem('notes'));
+            notes = JSON.parse(storedNotes) as string[];
         }
+
         return notes;
     }
 
-    static addNotes(text) {
+    static addNotes(text: string) {
         const notes = Notes.getNotes();
         notes.push(text);
 
         localStorage.setItem('notes', JSON.stringify(notes));
-        UI.display();
+        Notes.display();
     }
 }
 
-function deleteNotes(id) {
+function deleteNotes(id: number) {
     const notes = Notes.getNotes();
     notes.splice(id, 1);
     localStorage.setItem('notes', JSON.stringify(notes));
@@ -52,7 +55,7 @@ function deleteNotes(id) {
 
 form.addEventListener('submit', (e) => {
     // e.preventDefault();
-    if(myText.value !== '') {
+    if (myText.value !== '') {
         Notes.addNotes(myText.value);
     }
 });
